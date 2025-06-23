@@ -8,9 +8,9 @@ router.get('/:id', async (req, res) => {
   const id = Number(req.params.id)
 
   try {
-    const posts = await db.getUserProfile(id)
+    const userProfile = await db.getUserProfile(id)
 
-    res.json(posts)
+    res.json(userProfile)
   } catch (error) {
     console.log(error)
     res
