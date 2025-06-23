@@ -19,4 +19,19 @@ router.get('/post/:id', async (req, res) => {
   }
 })
 
+router.get('/user/:id', async (req, res) => {
+  const id = Number(req.params.id)
+
+  try {
+    const comments = await db.getCommentsFromUser(id)
+
+    res.json(comments)
+  } catch (error) {
+    console.log(error)
+    res
+      .status(500)
+      .json({ message: 'Something went wrong grabbing comments from user' })
+  }
+})
+
 export default router
